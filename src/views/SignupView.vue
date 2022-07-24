@@ -24,7 +24,7 @@
 import { ref } from "vue";
 import PreAuthHeader from "../components/PreAuthHeader.vue";
 import AuthWindow from "../components/AuthWindow.vue";
-
+import router from "../router";
 import { signup } from "../api-services/auth";
 
 const signupSuccess = ref(false);
@@ -35,6 +35,7 @@ function onSubmit(username, password) {
 		.then((res) => {
 			if (res.status == 200) {
 				signupSuccess.value = true;
+				router.push("login");
 			} else {
 				signupFailure.value = true;
 			}

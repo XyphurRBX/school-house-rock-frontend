@@ -7,4 +7,11 @@ function signup(username, password) {
 	});
 }
 
-export { signup };
+function login(username, password) {
+	return Axios.post("/authenticate", {
+		username: username,
+		password: password,
+	});
+}
+
+export { signup, login };
