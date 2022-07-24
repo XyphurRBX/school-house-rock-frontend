@@ -1,7 +1,7 @@
 <template>
-	<LoginPanel />
+	<PreAuthHeader />
 </template>
 
 <script setup>
-import LoginPanel from "../components/LoginPanel.vue";
+import PreAuthHeader from "../components/PreAuthHeader.vue";
 </script>

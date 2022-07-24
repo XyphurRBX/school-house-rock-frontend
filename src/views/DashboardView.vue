@@ -1,7 +1,7 @@
 <template>
-	<Header />
+	<DashboardHeader />
 </template>
 
 <script setup>
-import Header from "../components/Header.vue";
+import DashboardHeader from "../components/DashboardHeader.vue";
 </script>

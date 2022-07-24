@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import store from "../store";
 
 const routes = [
 	{
@@ -10,17 +11,41 @@ const routes = [
 	{
 		path: "/dashboard",
 		name: "dashboard",
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/DashboardView.vue"),
+		component: () => import("../views/DashboardView.vue"),
+	},
+	{
+		path: "/login",
+		name: "login",
+		component: () => import("../views/LoginView.vue"),
+	},
+	{
+		path: "/signup",
+		name: "signup",
+		component: () => import("../views/SignupView.vue"),
 	},
 ];
 
 const router = createRouter({
 	history: createWebHashHistory(),
 	routes,
+});
+
+// handle auth navigation guard
+router.beforeEach(async (to) => {
+	const isAuthenticated = store.getters.loginState;
+	if (
+		!isAuthenticated &&
+		to.name !== "login" &&
+		to.name !== "signup" &&
+		to.name !== "home"
+	) {
+		return { name: "login" };
+	} else if (
+		isAuthenticated &&
+		(to.name === "login" || to.name === "signup" || to.name === "home")
+	) {
+		return { name: "dashboard" };
+	}
 });
 
 export default router;
