@@ -1,23 +1,25 @@
 <template>
 	<PreAuthHeader />
-	<AuthWindow color="primary" title="Sign Up" @submit="onSubmit" />
+	<v-main>
+		<AuthWindow color="primary" title="Sign Up" @submit="onSubmit" />
 
-	<v-alert
-		class="mx-4"
-		v-model="signupSuccess"
-		variant="tonal"
-		closable
-		type="success"
-		>Successfully signed up!</v-alert
-	>
-	<v-alert
-		class="mx-4"
-		v-model="signupFailure"
-		variant="tonal"
-		closable
-		type="error"
-		>Sign up failed.</v-alert
-	>
+		<v-alert
+			class="mx-4"
+			v-model="signupSuccess"
+			variant="tonal"
+			closable
+			type="success"
+			>Successfully signed up!</v-alert
+		>
+		<v-alert
+			class="mx-4"
+			v-model="signupFailure"
+			variant="tonal"
+			closable
+			type="error"
+			>Sign up failed.</v-alert
+		>
+	</v-main>
 </template>
 
 <script setup>
