@@ -44,7 +44,7 @@ function getAttributes() {
 }*/
 
 async function initialize() {
-	console.log(getEntityData());
+	console.log(await getEntityData());
 }
 
 initialize();
