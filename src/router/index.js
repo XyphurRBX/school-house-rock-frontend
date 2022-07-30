@@ -1,5 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import HomeView from "../views/HomeView.vue";
+import DashboardView from "../views/DashboardView.vue";
+import LoginView from "../views/LoginView.vue";
+import SignupView from "../views/SignupView.vue";
+import ClassesView from "../views/ClassesView.vue";
+import EmployeesView from "../views/EmployeesView.vue";
+import EnrollmentView from "../views/EnrollmentView.vue";
+import JobsView from "../views/JobsView.vue";
+import StudentsView from "../views/StudentsView.vue";
+import TeachersViews from "../views/TeachersView.vue";
+
 import store from "../store";
 
 const routes = [
@@ -11,47 +22,47 @@ const routes = [
 	{
 		path: "/dashboard",
 		name: "dashboard",
-		component: () => import("../views/DashboardView.vue"),
+		component: DashboardView,
 	},
 	{
 		path: "/login",
 		name: "login",
-		component: () => import("../views/LoginView.vue"),
+		component: LoginView,
 	},
 	{
 		path: "/signup",
 		name: "signup",
-		component: () => import("../views/SignupView.vue"),
+		component: SignupView,
 	},
 	{
 		path: "/classes",
 		name: "classes",
-		component: () => import("../views/Classes.vue"),
+		component: ClassesView,
 	},
 	{
 		path: "/employees",
 		name: "employees",
-		component: () => import("../views/Employees.vue"),
+		component: EmployeesView,
 	},
 	{
 		path: "/enrollment",
 		name: "enrollment",
-		component: () => import("../views/Enrollment.vue"),
+		component: EnrollmentView,
 	},
 	{
 		path: "/jobs",
 		name: "jobs",
-		component: () => import("../views/Jobs.vue"),
+		component: JobsView,
 	},
 	{
 		path: "/students",
 		name: "students",
-		component: () => import("../views/Students.vue"),
+		component: StudentsView,
 	},
 	{
 		path: "/teachers",
 		name: "teachers",
-		component: () => import("../views/Teachers.vue"),
+		component: TeachersViews,
 	},
 ];
 
