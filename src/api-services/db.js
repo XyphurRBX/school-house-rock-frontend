@@ -1,7 +1,23 @@
-import Axios from "axios";
+import axios from "axios";
+import router from "../router";
+import store from "../store";
+
+axios.interceptors.response.use(
+	(res) => {
+		return res;
+	},
+	(err) => {
+		console.log("Test");
+		if (err.response.status == 401) {
+			store.dispatch("clearAuthState");
+			router.push("login");
+		}
+		Promise.reject(err);
+	}
+);
 
 function getTable(tableName, limit, offset, orderBy, ascending) {
-	return Axios.get("/api/main/table", {
+	return axios.post("/api/main/table", {
 		tableName: tableName,
 		limit: limit,
 		offset: offset,
@@ -11,27 +27,27 @@ function getTable(tableName, limit, offset, orderBy, ascending) {
 }
 
 function getEntryCount(tableName) {
-	return Axios.get("/api/main/entrycount", {
+	return axios.post("/api/main/entrycount", {
 		tableName: tableName,
 	});
 }
 
 function deleteRow(tableName, rowIdentifiers) {
-	return Axios.delete("/api/main/row", {
+	return axios.delete("/api/main/row", {
 		tableName: tableName,
 		rowIdentifiers: rowIdentifiers,
 	});
 }
 
 function createRow(tableName, values) {
-	return Axios.post("/api/main/row", {
+	return axios.post("/api/main/row", {
 		tableName: tableName,
 		values: values,
 	});
 }
 
 function modifyRow(tableName, rowIdentifiers, newValues) {
-	return Axios.patch("/api/main/row", {
+	return axios.patch("/api/main/row", {
 		tableName: tableName,
 		rowIdentifiers: rowIdentifiers,
 		values: newValues,
