@@ -1,23 +1,25 @@
 <template>
 	<PreAuthHeader />
-	<AuthWindow color="secondary" title="Login" @submit="onSubmit" />
+	<v-main>
+		<AuthWindow color="secondary" title="Login" @submit="onSubmit" />
 
-	<v-alert
-		class="mx-4"
-		v-model="loginSuccess"
-		variant="tonal"
-		closable
-		type="success"
-		>Successfully logged in!</v-alert
-	>
-	<v-alert
-		class="mx-4"
-		v-model="loginFailure"
-		variant="tonal"
-		closable
-		type="error"
-		>Login failed.</v-alert
-	>
+		<v-alert
+			class="mx-4"
+			v-model="loginSuccess"
+			variant="tonal"
+			closable
+			type="success"
+			>Successfully logged in!</v-alert
+		>
+		<v-alert
+			class="mx-4"
+			v-model="loginFailure"
+			variant="tonal"
+			closable
+			type="error"
+			>Login failed.</v-alert
+		>
+	</v-main>
 </template>
 
 <script setup>
@@ -39,6 +41,7 @@ function onSubmit(username, password) {
 			if (res.status == 200) {
 				loginSuccess.value = true;
 				store.dispatch("loginState", true);
+				store.dispatch("usernameState", username);
 				router.push("dashboard");
 			} else {
 				loginFailure.value = true;

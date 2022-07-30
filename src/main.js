@@ -17,6 +17,5 @@ const vuetify = createVuetify({
 loadFonts();
 
 Axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT;
-console.log(import.meta.env.VITE_API_ENDPOINT);
 
 createApp(App).use(router).use(store).use(vuetify).mount("#app");

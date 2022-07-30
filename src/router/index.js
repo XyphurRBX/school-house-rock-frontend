@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import store from "../store";
 
@@ -23,10 +23,40 @@ const routes = [
 		name: "signup",
 		component: () => import("../views/SignupView.vue"),
 	},
+	{
+		path: "/classes",
+		name: "classes",
+		component: () => import("../views/Classes.vue"),
+	},
+	{
+		path: "/employees",
+		name: "employees",
+		component: () => import("../views/Employees.vue"),
+	},
+	{
+		path: "/enrollment",
+		name: "enrollment",
+		component: () => import("../views/Enrollment.vue"),
+	},
+	{
+		path: "/jobs",
+		name: "jobs",
+		component: () => import("../views/Jobs.vue"),
+	},
+	{
+		path: "/students",
+		name: "students",
+		component: () => import("../views/Students.vue"),
+	},
+	{
+		path: "/teachers",
+		name: "teachers",
+		component: () => import("../views/Teachers.vue"),
+	},
 ];
 
 const router = createRouter({
-	history: createWebHashHistory(),
+	history: createWebHistory(),
 	routes,
 });
 

@@ -1,7 +1,5 @@
 <template>
-	<DashboardHeader title="School House Rock" />
-
-	<v-main></v-main>
+	<DashboardHeader title="Students" />
 </template>
 
 <script setup>
