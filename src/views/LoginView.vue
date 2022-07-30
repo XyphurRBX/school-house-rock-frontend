@@ -34,8 +34,6 @@ const loginSuccess = ref(false);
 const loginFailure = ref(false);
 
 function onSubmit(username, password) {
-	console.log("submitting", username, password);
-
 	login(username, password)
 		.then((res) => {
 			if (res.status == 200) {

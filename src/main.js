@@ -17,5 +17,10 @@ const vuetify = createVuetify({
 loadFonts();
 
 Axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT;
+Axios.defaults.withCredentials = true;
 
-createApp(App).use(router).use(store).use(vuetify).mount("#app");
+const app = createApp(App);
+app.use(router);
+app.use(store);
+app.use(vuetify);
+app.mount("#app");
