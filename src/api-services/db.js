@@ -7,7 +7,6 @@ axios.interceptors.response.use(
 		return res;
 	},
 	(err) => {
-		console.log("Test");
 		if (err.response.status == 401) {
 			store.dispatch("clearAuthState");
 			router.push("login");
@@ -16,7 +15,7 @@ axios.interceptors.response.use(
 	}
 );
 
-function getTable(tableName, limit, offset, orderBy, ascending) {
+function getTable(tableName, limit, offset, ascending, orderBy) {
 	return axios.post("/api/main/table", {
 		tableName: tableName,
 		limit: limit,
@@ -34,8 +33,10 @@ function getEntryCount(tableName) {
 
 function deleteRow(tableName, rowIdentifiers) {
 	return axios.delete("/api/main/row", {
-		tableName: tableName,
-		rowIdentifiers: rowIdentifiers,
+		data: {
+			tableName: tableName,
+			rowIdentifiers: rowIdentifiers,
+		},
 	});
 }
 
