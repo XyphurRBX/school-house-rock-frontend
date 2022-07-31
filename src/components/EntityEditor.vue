@@ -144,7 +144,9 @@ async function getEntityData() {
 
 function onDelete(rowIndex) {
 	const rowIdentifers = unref(entries.value)[rowIndex];
-	deleteRow(entityName.value, rowIdentifers).then(() => {
+	deleteRow(entityName.value, rowIdentifers).then((x) => {
+		if (!x.data) alert("Action prohibited due to constraints");
+
 		getEntityData();
 	});
 }
@@ -154,7 +156,9 @@ function onCreateClicked() {
 }
 
 function onCreateSubmit(attributeValues) {
-	createRow(entityName.value, attributeValues).then(() => {
+	createRow(entityName.value, attributeValues).then((x) => {
+		if (!x.data) alert("Action prohibited due to constraints");
+
 		getEntityData();
 	});
 }
@@ -182,7 +186,9 @@ function onEditSubmit(rowIndex) {
 	const rowIdentifers = unref(entries.value)[rowIndex];
 	const newValues = unref(editValues);
 	const tableName = unref(entityName);
-	modifyRow(tableName, rowIdentifers, newValues).then(() => {
+	modifyRow(tableName, rowIdentifers, newValues).then((x) => {
+		if (!x.data) alert("Action prohibited due to constraints");
+
 		getEntityData();
 	});
 }
