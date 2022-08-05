@@ -55,9 +55,10 @@ function modifyRow(tableName, rowIdentifiers, newValues) {
 	});
 }
 
-function getRows(value) {
-	return axios.post("/api/main/table", {
-		values: value,
+function getRows(tableName, rowIdentifiers) {
+	return axios.post("/api/main/tableWithFilter", {
+		tableName: tableName,
+		rowIdentifiers: rowIdentifiers,
 	});
 }
 
