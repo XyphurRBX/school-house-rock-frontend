@@ -55,4 +55,11 @@ function modifyRow(tableName, rowIdentifiers, newValues) {
 	});
 }
 
-export { getTable, getEntryCount, deleteRow, createRow, modifyRow };
+function getRows(tableName, rowIdentifiers) {
+	return axios.post("/api/main/tableWithFilter", {
+		tableName: tableName,
+		rowIdentifiers: rowIdentifiers,
+	});
+}
+
+export { getTable, getEntryCount, deleteRow, createRow, modifyRow, getRows };
